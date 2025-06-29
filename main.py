@@ -30,7 +30,7 @@ class_labels = ['pituitary', 'glioma', 'notumor', 'meningioma'] # Ensure this ma
 # with how the model was saved. The error 'Unrecognized keyword arguments: ['batch_shape']'
 # suggests a version mismatch.
 try:
-    model_path = 'models/modelp1.keras'
+    model_path = 'models/model.keras'
     if os.path.exists(model_path):
         model = load_model(model_path)
         logging.info("Model loaded successfully.")
