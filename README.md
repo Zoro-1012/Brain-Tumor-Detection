@@ -16,7 +16,7 @@ Seamlessly upload MRI scans from your system.
 ### 2. 🧠 Tumor Analysis with AI
 Scans are analyzed using a fine-tuned VGG16 CNN model to classify tumor types.
 
-![Analyzed Scan](screens/analyzed_scan.png)
+![Analyzed Scan](screens/analysed_scan.png)
 
 ---
 
