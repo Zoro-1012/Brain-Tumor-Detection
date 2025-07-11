@@ -1,21 +1,22 @@
-# Brain-Tumor-Detection-Using-Deep-Learning-MRI-Images-Detection-Using-Computer-Vision
+# Brain-Tumor-Detection
 
-The model is built on top of VGG16, which is a pre-trained convolutional neural network (CNN) for image classification.
+This project uses deep learning and computer vision to detect brain tumors from MRI images. It leverages a fine-tuned VGG16 architecture for high-accuracy classification.
 
-* First, the VGG16 model is loaded with input_shape=(IMAGE_SIZE,IMAGE_SIZE,3), include_top=False, weights='imagenet'. The input shape is set to match the size of the images in the dataset, which is 128x128 pixels. The include_top parameter is set to False, which means that the final fully-connected layers of VGG16 that perform the classification will not be included. The weights parameter is set to 'imagenet' which means that the model will be pre-trained with a dataset of 1.4 million images called imagenet
+## Model Overview
 
-* Next, the for layer in base_model.layers: loop is used to set all layers of the base_model (VGG16) to non-trainable, so that the weights of these layers will not be updated during training.
+The model is built on top of VGG16, a pre-trained convolutional neural network (CNN) originally trained on the ImageNet dataset.
 
-* Then, the last three layers of the VGG16 model are set to trainable by using base_model.layers[-2].trainable = True,base_model.layers[-3].trainable = True and base_model.layers[-4].trainable = True
+### Key Features:
+- Input images resized to **128x128**.
+- **VGG16** used with `include_top=False` and `weights='imagenet'`.
+- All base VGG layers are **frozen** except the last 3.
+- **Flatten → Dropout → Dense → Dropout → Dense(softmax)** sequence added.
+- Final output layer uses **softmax** for multiclass classification (e.g., glioma, meningioma, pituitary, notumor).
 
-* After that, a Sequential model is created and the VGG16 model is added to it with model.add(base_model).
+### Regularization:
+- **Dropout layers (0.3 and 0.2)** are used to prevent overfitting.
+- **Relu** activation is used in the intermediate dense layer.
 
-* Next, a Flatten layer is added to the model with model.add(Flatten()) which reshapes the output of the VGG16 model from a 3D tensor to a 1D tensor, so that it can be processed by the next layers of the model.
+---
 
-* Then, a Dropout layer is added with model.add(Dropout(0.3)) which is used to prevent overfitting by randomly setting a fraction of input units to 0 at each update during training time.
-
-* After that, a dense layer is added with 128 neurons and relu activation function is added with model.add(Dense(128, activation='relu')).
-
-* Next, another Dropout layer is added with model.add(Dropout(0.2))
-
-* Finally, the output dense layer is added with number of neurons equal to the number of unique labels and 'softmax' activation function is added with model.add(Dense(len(unique_labels), activation='softmax')). The 'softmax' activation function is used to give a probability distribution over the possible classes.
+> This README is auto-merged from local and remote sources during Git synchronization.
