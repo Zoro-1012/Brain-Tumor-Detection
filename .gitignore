@@ -1,0 +1,17 @@
+# Bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment
+.env
+venv/
+*.h5
+*.keras
+
+# Uploads and outputs
+uploads/
+reports/
+scan_history.json
+*.log
